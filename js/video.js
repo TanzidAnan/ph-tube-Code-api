@@ -1,5 +1,11 @@
 // console.log(215)
-
+function getTimeString(time) {
+    const hour = parseInt(time / 3600);
+    let remainingSecond = time % 3600;
+    const minute = parseInt(remainingSecond / 60);
+    remainingSecond = remainingSecond % 60
+    return `${hour}Hour ${minute} minute ${remainingSecond} second ago`
+}
 const loadCategories = () => {
     fetch('https://openapi.programming-hero.com/api/phero-tube/categories')
         .then(res => res.json())
@@ -43,8 +49,10 @@ const displayVideos = (videos) => {
         card.innerHTML = `
          <figure class="h-[200px] relative">
          <img src=${video.thumbnail}
-         alt="Shoes" class="w-full h-full object-cover" />
-         <span class="absolute right-2 bottom-2 bg-black rounded p-1 text-white">${video.others.posted_date}</span>
+         alt="Shoes" class="w-full h-full  object-cover" />
+         ${video.others.posted_date?.length == 0 ? "" : `<span class="absolute right-2 bottom-2 bg-black rounded p-1 text-white text-sm">${getTimeString(video.others.posted_date)}</span>`
+            }
+         
          </figure>
         <div class="px-0 py-2 flex gap-2">
           <div>
@@ -54,7 +62,7 @@ const displayVideos = (videos) => {
         <h2 class="font-bold">${video.title}</h2>
         <div class="flex items-center gap-2">
             <p class="text-gray-400">${video.authors[0].profile_name}</p> 
-          ${video.authors[0].verified ===true ? `<img class="bg-red-300 rounded-full" src="https://img.icons8.com/?size=24&id=5y6kuxvatiu0&format=png" alt="">`:""}
+          ${video.authors[0].verified === true ? `<img class="bg-red-300 rounded-full" src="https://img.icons8.com/?size=24&id=5y6kuxvatiu0&format=png" alt="">` : ""}
         </div>
         
         <p></p>
