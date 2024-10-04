@@ -41,9 +41,9 @@ const displayVideos = (videos) => {
         const card = document.createElement('div');
         card.classList = 'card card-compact'
         card.innerHTML = `
-         <figure>
+         <figure class="h-[200px]">
          <img src=${video.thumbnail}
-         alt="Shoes" />
+         alt="Shoes" class="w-full h-full" />
          </figure>
         <div class="card-body">
           <h2 class="card-title">Shoes!</h2>
