@@ -52,6 +52,15 @@ const displayVideos = (videos) => {
     // console.log(videos)
     const vidoesContainer = document.getElementById('videos');
     vidoesContainer.innerHTML ="";
+    if(videos.length ===0){
+        vidoesContainer.innerHTML =`
+        <div class="min-h-[400px] flex flex-col gap-5 justify-center items-center">
+             <img src="../Logo.png" alt="">
+             <h2>Content Hear in this </h2>
+        </div>
+        `;
+        return;
+    }
     videos.forEach(video => {
         console.log(video);
         const card = document.createElement('div');
