@@ -50,8 +50,12 @@ const displayVideos = (videos) => {
           <img class="w-10 h-10 rounded-full object-cover" src=${video.authors[0].profile_picture} alt="">
           </div>
           <div>
-        <h2></h2>
-        <p></p>
+        <h2 class="font-bold">${video.title}</h2>
+        <div class="flex items-center gap-2">
+            <p class="text-gray-400">${video.authors[0].profile_name}</p>
+          <img src="https://img.icons8.com/?size=24&id=5y6kuxvatiu0&format=png" alt="">
+        </div>
+        
         <p></p>
     </div>
       </div>
