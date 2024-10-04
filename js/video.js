@@ -19,6 +19,15 @@ const loadVideos = () => {
         .then(data => displayVideos(data.videos))
         .catch(error => console.log(error))
 }
+
+const loadCategoryVideos =(id) =>{
+    alert(id);
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
+        .then(res => res.json())
+        .then(data => displayVideos(data.category))
+        .catch(error => console.log(error))
+}
+
 const cardDamo =
 {
     "category_id": "1003",
@@ -41,7 +50,8 @@ const cardDamo =
 }
 const displayVideos = (videos) => {
     // console.log(videos)
-    const vidoesContainer = document.getElementById('videos')
+    const vidoesContainer = document.getElementById('videos');
+    vidoesContainer.innerHTML ="";
     videos.forEach(video => {
         console.log(video);
         const card = document.createElement('div');
@@ -79,11 +89,14 @@ const displayCategories = (categories) => {
     const categoryContiner = document.getElementById('categorys')
     // console.log(data)
     categories.forEach(item => {
-        // console.log(item)
-        const button = document.createElement('button');
-        button.classList = 'btn';
-        button.innerText = item.category;
-        categoryContiner.append(button)
+        console.log(item)
+        const buttonContainer = document.createElement('div');
+        buttonContainer.innerHTML =`
+        <button onclick="loadCategoryVideos(${item.category_id})" class="btn">
+            ${item.category}
+        </button>
+        `
+        categoryContiner.append(buttonContainer)
     })
 }
 
