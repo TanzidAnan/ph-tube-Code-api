@@ -43,13 +43,17 @@ const displayVideos = (videos) => {
         card.innerHTML = `
          <figure class="h-[200px]">
          <img src=${video.thumbnail}
-         alt="Shoes" class="w-full h-full" />
+         alt="Shoes" class="w-full h-full object-cover" />
          </figure>
-        <div class="card-body">
-          <h2 class="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
+        <div class="px-0 py-2 flex gap-2">
+          <div>
+          <img class="w-10 h-10 rounded-full object-cover" src=${video.authors[0].profile_picture} alt="">
+          </div>
+          <div>
+        <h2></h2>
+        <p></p>
+        <p></p>
+    </div>
       </div>
       </div>
         
